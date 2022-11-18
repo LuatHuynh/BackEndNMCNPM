@@ -2,25 +2,24 @@ const express = require('express');
 const db = require('./config/db/server.js');
 const app = express();
 const port = 3000;
-const Good = require('./models/Goods.m')
+const route = require('./Routers/server');
 
 // connect to DB
 db.connect();
 
-app.get('/', (req, res) => {
+server.use(express.static(__dirname));
+server.use(express.urlencoded({
+    extended: true
+}));
+server.use(express.json());
 
-    Good.find({}, function (err, goods){
-        if (!err){
-            console.log(goods[0]);
-            res.json(goods);
-        }
-        else{
-            res.status(400).json({error: 'error!'});
-        }
-    })
-    
-})
+route(server);
+
+server.use((err, req, res, next) => {
+    const statusCode = err.statusCode | 500;
+    res.status(statusCode).send("status code:" + statusCode + ": " + err.message);
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+    console.log(`Example app listening on port ${port}`);
 })
