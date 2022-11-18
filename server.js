@@ -1,6 +1,6 @@
 const express = require('express');
 const db = require('./config/db/server.js');
-const app = express();
+const server = express();
 const port = 3000;
 const route = require('./Routers/server');
 
@@ -20,6 +20,6 @@ server.use((err, req, res, next) => {
     res.status(statusCode).send("status code:" + statusCode + ": " + err.message);
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 })
