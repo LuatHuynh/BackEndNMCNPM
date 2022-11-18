@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const OnSell = new Schema({
   id: String,
-  quantity: Number
+  total: Number
 });
 
 module.exports = mongoose.model('Onsell', OnSell);
