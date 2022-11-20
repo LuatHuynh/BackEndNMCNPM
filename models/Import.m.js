@@ -3,11 +3,14 @@ const Schema = mongoose.Schema;
 //const ObjectId = Schema.ObjectId;
 
 const Import = new Schema({
-    idGood: String,
+    productID: {
+        type: Schema.Types.ObjectId,
+        ref: 'Product'
+    },
     time: Date,
-    quantity: Number,
+    total: Number,
+    totalPrice: Number,
     source: String,
-    type: String
 });
 
 module.exports = mongoose.model('Import', Import);

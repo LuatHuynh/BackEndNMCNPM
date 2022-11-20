@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 //const ObjectId = Schema.ObjectId;
 
 const Inventory = new Schema({
-    idGood: String,
+    productID: {
+        type: Schema.Types.ObjectId,
+        ref: 'Product'
+    },
     quantity: Number
 });
 

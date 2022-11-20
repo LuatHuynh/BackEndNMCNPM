@@ -3,8 +3,11 @@ const Schema = mongoose.Schema;
 //const ObjectId = Schema.ObjectId;
 
 const OnSell = new Schema({
-  id: String,
-  total: Number
+  product: {
+    type: Schema.Types.ObjectId,
+    ref: 'Product'
+  },
+  quantity: Number
 });
 
 module.exports = mongoose.model('Onsell', OnSell);

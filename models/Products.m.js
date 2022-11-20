@@ -7,7 +7,9 @@ const Product = new Schema({
   name: String,
   img: String,
   type: String,
-  price: Number
+  price: Number,
+  daysell: Number,
+  total: Number
 });
 
 module.exports = mongoose.model('Product', Product);

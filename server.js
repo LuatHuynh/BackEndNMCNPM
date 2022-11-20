@@ -3,6 +3,7 @@ const db = require('./config/db/server.js');
 const server = express();
 const port = 3000;
 const route = require('./Routers/server');
+const canteenSchedule = require('./config/db/schedule');
 
 // connect to DB
 db.connect();
@@ -12,6 +13,8 @@ server.use(express.urlencoded({
     extended: true
 }));
 server.use(express.json());
+
+canteenSchedule.run();
 
 route(server);
 
