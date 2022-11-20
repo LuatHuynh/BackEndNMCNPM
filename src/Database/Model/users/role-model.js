@@ -5,7 +5,7 @@ const {Schema, model} = mongoose;
 const Role = new Schema({
     name: {
         type: String,
-        enum: ['staff', 'owner']
+        enum: ['user', 'admin', 'assistant']
     },
     permissions: [{
         ref: 'permission',

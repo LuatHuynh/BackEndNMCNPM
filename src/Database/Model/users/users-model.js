@@ -7,12 +7,17 @@ const User = new Schema({
         required: true
     },
     email: {
-        name: String,
+        type: String,
         required: true,
     },
     password: String,
 
     property:Number,
+
+    status: {
+        type: Boolean,
+        default: false
+    },
 
     roleID: [
         {

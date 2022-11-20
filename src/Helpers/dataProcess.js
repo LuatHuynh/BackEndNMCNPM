@@ -16,8 +16,28 @@ module.exports.createHashPassword = async(password, saltGenarated) =>{
 }
 
 //compare password login with password in database
-module.exports.validatePassword = async(passwordLogin, hashedPassword) =>{
-    const checkPassword = await bcrypt.compare(passwordLogin, hashedPassword);
+module.exports.validatePassword = async(passwordLogin, hashedPasswordInDatabase) =>{
+    const checkPassword = await bcrypt.compare(passwordLogin, hashedPasswordInDatabase);
     if(checkPassword) return true;
     return false;
+}
+
+//generate Token
+module.exports.GenerateToken = (payload, secret, expire = '30d')=> {
+    const token = jwt.sign({...payload}, secret, {expiresIn: expire});
+    return token;
+}
+
+//format ID
+module.exports.FormatID = (_id) => {
+
+    
+}
+
+//format data
+module.exports.formatData = (data)=>{
+    if(data) {
+        return { ...data };
+    }
+    throw new Error('Data Not found!');
 }

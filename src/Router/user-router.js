@@ -2,10 +2,14 @@ const express = require('express');
 const route = express.Router();
 
 
-//route.post('/register',  );
+//route.get('/changeProfile', );
 
-//route.post('/login', );
+//route.get('/changeProfile', );
+
+//route.put('/changePassword', );
+
+//route.post('/changePassword', );
 
 //route.post('/logout', );
 
-//route.post('/refresh-token', );
+module.exports = route;
