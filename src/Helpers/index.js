@@ -3,6 +3,8 @@ const {
     createHashPassword,
     validatePassword,
     GenerateToken,
+    FormatID,
+    VerifyAccessToken,
     formatData,
 
 } = require('./dataProcess');
@@ -13,6 +15,8 @@ module.exports = {
     createHashPassword,
     validatePassword,
     GenerateToken,
+    FormatID,
+    VerifyAccessToken,
     formatData,
     
 }

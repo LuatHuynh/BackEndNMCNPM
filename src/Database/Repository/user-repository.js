@@ -1,13 +1,14 @@
 const {User} = require('../Model');//Lay data tu user
-const { updateOne } = require('../Model/users/permision-model');
+//const { updateOne } = require('../Model/users/permision-model');
 
 const userRepository = {
-    CreateUser: async ({username, password, email, role }) => {
+    CreateUser: async ({username, password, email, IdUser, role }) => {
         try {
             const newUser = new User({
                 username: username,
                 email: email,
                 password: password,
+                IdUser: IdUser,
                 roleID: role,
             })
             
@@ -45,6 +46,15 @@ const userRepository = {
                     status: status
                 }
             })
+        } catch (err) {
+            throw err;
+        }
+    },
+
+    getNumberOfCollection: async() => {
+        try{
+            let result = await User.find();
+            return result;
         } catch (err) {
             throw err;
         }

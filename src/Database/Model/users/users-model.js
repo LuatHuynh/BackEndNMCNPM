@@ -12,19 +12,22 @@ const User = new Schema({
     },
     password: String,
 
-    property:Number,
+    IdUser: String,
+
+    property: {
+        type: Number,
+        default: 0
+    },
 
     status: {
         type: Boolean,
         default: false
     },
 
-    roleID: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "role",
-        },
-    ],
+    roleID: {
+            type: Schema.Types.ObjectId,
+            ref: 'role',
+    },
 });
 
 module.exports = model('user',User);

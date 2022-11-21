@@ -19,6 +19,7 @@ module.exports = async function(app) {
     // connect to mongodb
     await mongoConnection();
 
+    //bat loi
     router(app);
 
 }

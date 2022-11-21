@@ -6,6 +6,7 @@ const {
     validatePassword,
     createHashPassword,
     GenerateToken,
+    FormatID,
     formatData
 } = require('./../Helpers');
 
@@ -22,9 +23,9 @@ const authService = {
                 //     cause: status.NOT_FOUND
                 // })
             }
-            console.log(email)
+            const numberCollection = await userRepository.getNumberOfCollection();
+            const newIdUser = FormatID(numberCollection.length);
             const salt = await genarateSalt();
-            console.log(password);
             const passwordHashed = await createHashPassword(password,salt);
             console.log(passwordHashed);
             let _role = await roleRepository.GetRoleIdByRoleName(role);
@@ -33,6 +34,7 @@ const authService = {
                 username: username,
                 email: email,
                 password: passwordHashed,
+                IdUser: newIdUser,
                 role: _role._id
             });
 
@@ -49,7 +51,6 @@ const authService = {
                 //     cause: status.NOT_FOUND
                 // })
             }
-            console.log(user);
             // check password
             const validPassword = await validatePassword(password,user.password);
             if(!validPassword) {
